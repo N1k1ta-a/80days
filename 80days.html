@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>80 дней вместе ❤️</title>
   <style>
-    /* Основные стили */
     * {
       margin: 0;
       padding: 0;
@@ -18,71 +17,72 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(145deg, #fce4ec 0%, #f8bbd0 100%);
-      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
-      padding: 20px;
+      font-family: -apple-system, 'Segoe UI', 'Roboto', system-ui, sans-serif;
+      padding: 16px;
       position: relative;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Контейнер открытки */
     .card {
-      max-width: 640px;
+      max-width: 420px;
       width: 100%;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-radius: 48px;
-      padding: 40px 30px 50px;
-      box-shadow: 0 30px 60px rgba(183, 28, 28, 0.25),
-                  0 10px 25px rgba(0, 0, 0, 0.08);
+      border-radius: 40px;
+      padding: 32px 20px 40px;
+      box-shadow: 0 20px 50px rgba(183, 28, 28, 0.2),
+                  0 8px 20px rgba(0, 0, 0, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.5);
       text-align: center;
       position: relative;
       z-index: 10;
-      transition: transform 0.3s ease;
     }
 
-    .card:hover {
-      transform: scale(1.01);
-    }
-
-    /* Заголовок */
     .title {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
       font-weight: 700;
       color: #b71c1c;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 12px rgba(183, 28, 28, 0.2);
-      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-shadow: 0 4px 12px rgba(183, 28, 28, 0.15);
+      margin-bottom: 4px;
       line-height: 1.2;
     }
 
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       color: #880e4f;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.6);
       display: inline-block;
-      padding: 6px 24px;
+      padding: 5px 20px;
       border-radius: 40px;
       backdrop-filter: blur(4px);
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       font-weight: 500;
-      letter-spacing: 0.5px;
       border: 1px solid #f48fb1;
     }
 
-    /* Основной текст */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #f06292, #b71c1c, #f06292);
+      margin: 8px auto 18px;
+      border-radius: 10px;
+    }
+
     .message {
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       line-height: 1.7;
       color: #4a1a2a;
       background: rgba(255, 255, 255, 0.4);
-      padding: 22px 20px;
-      border-radius: 36px;
+      padding: 18px 16px;
+      border-radius: 28px;
       backdrop-filter: blur(4px);
-      margin-bottom: 30px;
+      margin-bottom: 24px;
       font-weight: 400;
       border: 1px solid rgba(255, 255, 255, 0.6);
+      text-align: left;
     }
 
     .message span {
@@ -90,36 +90,34 @@
       color: #b71c1c;
     }
 
-    /* Счетчик дней (крупно) */
     .days-badge {
       display: inline-block;
       background: linear-gradient(135deg, #b71c1c, #e53935);
       color: white;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      padding: 14px 40px;
-      border-radius: 60px;
-      box-shadow: 0 12px 24px rgba(183, 28, 28, 0.4);
-      margin-bottom: 30px;
-      letter-spacing: 2px;
+      padding: 12px 32px;
+      border-radius: 50px;
+      box-shadow: 0 10px 24px rgba(183, 28, 28, 0.35);
+      margin-bottom: 24px;
+      letter-spacing: 1px;
       border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
     .days-badge small {
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 400;
       opacity: 0.9;
-      margin-left: 6px;
+      margin-left: 4px;
     }
 
-    /* Подпись */
     .signature {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: #880e4f;
       font-weight: 500;
-      margin-top: 12px;
-      letter-spacing: 0.8px;
-      opacity: 0.8;
+      margin-top: 8px;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
     }
 
     .signature i {
@@ -129,15 +127,13 @@
     }
 
     @keyframes heartbeat {
-      0% { transform: scale(1); }
+      0%, 100% { transform: scale(1); }
       14% { transform: scale(1.2); }
       28% { transform: scale(1); }
       42% { transform: scale(1.15); }
       56% { transform: scale(1); }
-      100% { transform: scale(1); }
     }
 
-    /* Контейнер для падающих сердечек (canvas) */
     #hearts-canvas {
       position: fixed;
       top: 0;
@@ -148,44 +144,49 @@
       z-index: 0;
     }
 
-    /* Адаптивность */
-    @media (max-width: 480px) {
+    /* Специально для маленьких телефонов */
+    @media (max-width: 380px) {
       .card {
-        padding: 30px 16px 40px;
+        padding: 24px 14px 32px;
+        border-radius: 32px;
       }
       .title {
-        font-size: 2.2rem;
+        font-size: 2rem;
       }
       .message {
-        font-size: 1.1rem;
-        padding: 18px 16px;
+        font-size: 1rem;
+        padding: 14px 14px;
       }
       .days-badge {
-        font-size: 1.8rem;
-        padding: 12px 28px;
+        font-size: 1.6rem;
+        padding: 10px 24px;
       }
       .subtitle {
-        font-size: 1rem;
-        padding: 4px 18px;
+        font-size: 0.95rem;
+        padding: 4px 16px;
       }
     }
 
-    /* Декоративная линия */
-    .divider {
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #f06292, #b71c1c, #f06292);
-      margin: 12px auto 22px;
-      border-radius: 10px;
+    /* Для очень больших экранов (планшеты) */
+    @media (min-width: 768px) {
+      .card {
+        max-width: 520px;
+        padding: 48px 40px 56px;
+      }
+      .title {
+        font-size: 3rem;
+      }
+      .message {
+        font-size: 1.2rem;
+        padding: 24px 24px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Холст для падающих сердечек -->
   <canvas id="hearts-canvas"></canvas>
 
-  <!-- Главная открытка -->
   <div class="card">
     <div class="title">80 дней ❤️</div>
     <div class="subtitle">с тобой — как одно мгновение</div>
@@ -202,20 +203,19 @@
     </div>
 
     <div class="signature">
-      С любовью, твой <i>❤️</i>
+      С любовью, твой дурашик <i>❤️</i>
     </div>
   </div>
 
   <script>
     (function() {
-      // ---------- Падающие сердечки (canvas) ----------
       const canvas = document.getElementById('hearts-canvas');
       const ctx = canvas.getContext('2d');
 
       let W, H;
       let hearts = [];
-      const MAX_HEARTS = 80; // по числу дней
-      const SYMBOL = '❤️';   // можно заменить на '♥' если нужен чистый текст
+      const MAX_HEARTS = 60; // чуть меньше для телефона (оптимизация)
+      const SYMBOL = '❤️';
 
       function resizeCanvas() {
         W = canvas.width = window.innerWidth;
@@ -224,7 +224,6 @@
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
 
-      // Сердце как объект
       class Heart {
         constructor() {
           this.reset();
@@ -232,24 +231,22 @@
 
         reset() {
           this.x = Math.random() * W;
-          this.y = -20 - Math.random() * 100;
-          this.size = 12 + Math.floor(Math.random() * 20); // 12-32px
-          this.speed = 1.2 + Math.random() * 1.8;          // скорость падения
-          this.wobble = 0.6 + Math.random() * 0.8;          // амплитуда покачивания
+          this.y = -20 - Math.random() * 80;
+          this.size = 10 + Math.floor(Math.random() * 16); // 10-26px (поменьше для телефона)
+          this.speed = 0.8 + Math.random() * 1.4;
+          this.wobble = 0.4 + Math.random() * 0.6;
           this.phase = Math.random() * Math.PI * 2;
-          this.opacity = 0.5 + Math.random() * 0.5;
-          this.rotation = (Math.random() - 0.5) * 0.3;      // небольшой поворот
+          this.opacity = 0.4 + Math.random() * 0.5;
+          this.rotation = (Math.random() - 0.5) * 0.2;
         }
 
         update() {
           this.y += this.speed;
-          this.x += Math.sin(this.phase + this.y * 0.02) * this.wobble * 0.4;
-          // если выходит за нижнюю границу — сбросить наверх
+          this.x += Math.sin(this.phase + this.y * 0.025) * this.wobble * 0.3;
           if (this.y > H + 40) {
             this.reset();
-            this.y = -20 - Math.random() * 80;
+            this.y = -20 - Math.random() * 60;
           }
-          // если уходит слишком вбок — мягко возвращаем
           if (this.x < -20) this.x = W + 20;
           if (this.x > W + 20) this.x = -20;
         }
@@ -259,64 +256,49 @@
           ctx.globalAlpha = this.opacity;
           ctx.translate(this.x, this.y);
           ctx.rotate(this.rotation);
-          // Рисуем сердечко через текст (просто и красиво)
           ctx.font = `${this.size}px "Segoe UI", "Arial", sans-serif`;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          // Градиент для объема
           const gradient = ctx.createRadialGradient(0, 0, 2, 0, 0, this.size);
           gradient.addColorStop(0, '#ff4d6d');
           gradient.addColorStop(0.6, '#e91e63');
           gradient.addColorStop(1, '#b71c1c');
           ctx.fillStyle = gradient;
-          ctx.shadowColor = 'rgba(183, 28, 28, 0.4)';
-          ctx.shadowBlur = 12;
+          ctx.shadowColor = 'rgba(183, 28, 28, 0.3)';
+          ctx.shadowBlur = 8;
           ctx.fillText(SYMBOL, 0, 0);
           ctx.restore();
         }
       }
 
-      // Инициализация массива сердечек
       function initHearts() {
         hearts = [];
         for (let i = 0; i < MAX_HEARTS; i++) {
           const h = new Heart();
-          // разброс по высоте для равномерного заполнения
           h.y = Math.random() * H;
           hearts.push(h);
         }
       }
       initHearts();
 
-      // Анимация
       function drawHearts() {
         ctx.clearRect(0, 0, W, H);
-
         for (let h of hearts) {
           h.update();
           h.draw();
         }
-
         requestAnimationFrame(drawHearts);
       }
 
       drawHearts();
 
-      // Пересоздавать сердечки при ресайзе (чтобы не вылезали за границы)
       window.addEventListener('resize', () => {
         resizeCanvas();
-        // обновим позиции для новых размеров
         for (let h of hearts) {
           h.x = Math.min(h.x, W - 10);
           h.y = Math.min(h.y, H - 10);
         }
       });
-
-      // ---------- (опционально) легкий параллакс при движении мыши ----------
-      // можно добавить совсем легкое смещение фона, но не обязательно
-      // просто для атмосферы — оставим как есть
-
-      console.log('❤️ 80 дней вместе! Поздравляю! ❤️');
     })();
   </script>
 
